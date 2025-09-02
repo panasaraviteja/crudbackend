@@ -11,7 +11,12 @@ describe('PostsService', () => {
         PostsService,
         {
           provide: getModelToken('Post'),
-          useValue: {}, // mock model
+          useValue: {
+            // mock functions used by PostsService (e.g., find, create)
+            find: jest.fn(),
+            create: jest.fn(),
+            // add others as needed
+          },
         },
       ],
     }).compile();
