@@ -1,27 +1,24 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PostsController } from './posts.controller';
-import { PostsService } from './posts.service';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
-describe('PostsController', () => {
-  let controller: PostsController;
+describe('AppController', () => {
+  let appController: AppController;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [PostsController],
-      providers: [
-        {
-          provide: PostsService,
-          useValue: {
-            // add mock methods here if needed
-          },
-        },
-      ],
+    const app: TestingModule = await Test.createTestingModule({
+      controllers: [AppController],
+      providers: [AppService],
     }).compile();
 
-    controller = module.get<PostsController>(PostsController);
+    appController = app.get<AppController>(AppController);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  describe('root', () => {
+    it('should return "Hello World!"', () => {
+      // src/app.controller.spec.ts
+      expect(appController.getHello()).toBe('Hello from NestJS!');
+
+    });
   });
 });
