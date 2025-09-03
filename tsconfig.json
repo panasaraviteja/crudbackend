@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2019",
     "module": "commonjs",
-      "types": ["jest"], 
+      "types": [], 
     "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true,
